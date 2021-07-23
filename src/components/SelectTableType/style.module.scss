@@ -1,0 +1,29 @@
+.tableType {
+    display: flex;
+    padding: 16px;
+
+    .table {
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        margin-right: 4px;
+
+
+        &.circle {
+            border-radius: 50%;
+        }
+
+        &.rectangle {
+            border-radius: 4px;
+            width: 80px;
+        }
+
+        &.square {
+            border-radius: 4px;
+        }
+
+        &.active {
+            background: var(--secondary);
+        }
+    }
+}

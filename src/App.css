@@ -1,0 +1,14 @@
+
+:root {
+    --primary: #ECF0F3;
+    --secondary: #B9C2D1;
+    --accent: #C4C4C4;
+    --text: #616161;
+    --transition: all .3s cubic-bezier(1, 0, .49, 1.55)
+
+
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}

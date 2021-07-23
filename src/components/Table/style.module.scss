@@ -1,0 +1,20 @@
+.table {
+    background: var(--primary);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+
+    &.circle {
+        border-radius: 50%;
+    }
+
+    &.rectangle {
+        border-radius: 16px;
+    }
+
+    &.square {
+        border-radius: 32px;
+    }
+}

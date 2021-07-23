@@ -1,0 +1,19 @@
+.paleWrapper {
+    position: absolute;
+    --pale-width: 70px;
+    --pale-height: 70px;
+    width: var(--pale-width);
+    height: var(--pale-height);
+    left: calc(50% - calc(var(--pale-width) * 0.5));
+    top: calc(50% - calc(var(--pale-height) * 0.5));
+    transition: var(--transition);
+
+    .pale {
+        border: 12px solid white;
+        border-radius: 50%;
+        width: var(--pale-width);
+        height: var(--pale-height);
+        transition: var(--transition);
+        transform: var(--plate-translate);
+    }
+}
