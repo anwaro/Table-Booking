@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Table-Booking/static/css/main.0ec4531e.chunk.css",
-    "main.js": "/Table-Booking/static/js/main.afd404dc.chunk.js",
-    "main.js.map": "/Table-Booking/static/js/main.afd404dc.chunk.js.map",
+    "main.js": "/Table-Booking/static/js/main.809d46bb.chunk.js",
+    "main.js.map": "/Table-Booking/static/js/main.809d46bb.chunk.js.map",
     "runtime-main.js": "/Table-Booking/static/js/runtime-main.65cc84d6.js",
     "runtime-main.js.map": "/Table-Booking/static/js/runtime-main.65cc84d6.js.map",
     "static/js/2.0dfb0f1e.chunk.js": "/Table-Booking/static/js/2.0dfb0f1e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.65cc84d6.js",
     "static/js/2.0dfb0f1e.chunk.js",
     "static/css/main.0ec4531e.chunk.css",
-    "static/js/main.afd404dc.chunk.js"
+    "static/js/main.809d46bb.chunk.js"
   ]
 }
