@@ -24,14 +24,14 @@ export function usePlateStyle(index: number, count: number, active: boolean, tab
             }, 100);
         }
 
-    }, [tableType, count]);
+    }, [tableType, count, index]);
 
     useEffect(() => {
         if (!active) {
             setOpacity(0);
             setTranslate(trans(index, count, tableType, true));
         }
-    }, [active]);
+    }, [active, index]);
 
     return {
         opacity,

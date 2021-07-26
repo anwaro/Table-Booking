@@ -10,7 +10,7 @@ export function useChairStyle(index: number, count: number, active: boolean, tab
 
     useEffect(() => {
         setAngle(calculateAngle(index, count, tableType));
-    }, [count, tableType]);
+    }, [count, tableType, index]);
 
     useEffect(() => {
         if (opacity) {
@@ -24,14 +24,14 @@ export function useChairStyle(index: number, count: number, active: boolean, tab
             }, 200);
         }
 
-    }, [tableType, count]);
+    }, [tableType, count, index]);
 
     useEffect(() => {
         if (!active) {
             setOpacity(0);
             setTranslate(trans(index, count, tableType, true));
         }
-    }, [active]);
+    }, [active, index]);
     return {
         opacity,
         transform: `rotate(${angle}deg)`,
