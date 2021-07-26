@@ -1,14 +1,13 @@
-
 :root {
-    --primary: #ECF0F3;
-    --secondary: #B9C2D1;
-    --accent: #C4C4C4;
+    --primary: #ecf0f3;
+    --secondary: #b9c2d1;
+    --accent: #c4c4c4;
     --text: #616161;
-    --transition: all .3s cubic-bezier(1, 0, .49, 1.55)
-
-
+    --transition: all 0.3s cubic-bezier(1, 0, 0.49, 1.55);
 }
 
-*, :after, :before {
+*,
+:after,
+:before {
     box-sizing: border-box;
 }
