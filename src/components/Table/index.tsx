@@ -18,7 +18,7 @@ function Table({chairCount, tableType}: TableProps) {
         <div
             className={classNames(s.table, s[tableType.toLowerCase()])}
             style={{width, height}}
-        ></div>
+        />
     );
 }
 
