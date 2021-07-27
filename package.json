@@ -63,5 +63,11 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "lint-staged": {
+        "./src/**/*.{js,jsx,ts,tsx}": [
+            "prettier --write",
+            "eslint --fix-dry-run"
+        ]
     }
 }
