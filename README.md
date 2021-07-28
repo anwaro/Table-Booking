@@ -1,6 +1,6 @@
 # Table Booking Animation
 [Inspiration](https://dribbble.com/shots/16086029-Table-Booking-Animation).
-[Demo](https://dribbble.com/shots/16086029-Table-Booking-Animation).
+[Demo](https://anwaro.github.com/table-booking).
 
 ![Demo](./.github/animation.gif)
 
