@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import { useState } from "react";
 
-import './App.css';
-import Chair from './components/Chair';
-import Pale from './components/Plate';
-import Scene from './components/Scene';
-import SelectChairsCount from './components/SelectChairsCount';
-import SelectTableType from './components/SelectTableType';
-import Table from './components/Table';
-import {TableType} from './constants/Table';
-import {array} from './helpers/array';
+import "./App.css";
+import { Chair } from "./components/Chair";
+import { Pale } from "./components/Plate";
+import { Scene } from "./components/Scene";
+import { SelectChairsCount } from "./components/SelectChairsCount";
+import { SelectTableType } from "./components/SelectTableType";
+import { Table } from "./components/Table";
+import { TableType } from "./constants/Table";
+import { array } from "./helpers/array";
 
 function App() {
     const [count, setCount] = useState(2);

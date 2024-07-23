@@ -7,6 +7,7 @@
         height: 50px;
         background: var(--primary);
         margin-right: 4px;
+        border-radius: 4px;
 
 
         &.circle {
@@ -14,13 +15,9 @@
         }
 
         &.rectangle {
-            border-radius: 4px;
             width: 80px;
         }
 
-        &.square {
-            border-radius: 4px;
-        }
 
         &.active {
             background: var(--secondary);

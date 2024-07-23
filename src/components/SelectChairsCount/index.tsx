@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import React, {useCallback} from 'react';
+import classNames from "classnames";
+import { useCallback } from "react";
 
-import {ChairConfig} from '../../constants/Chair';
+import { ChairConfig } from "../../constants/Chair";
 
-import s from './style.module.scss';
+import s from "./style.module.scss";
 
 type SelectChairsProps = {
     count: number;
@@ -12,11 +12,11 @@ type SelectChairsProps = {
     setActive: (count: number) => void;
 };
 
-function SelectChairsCount({
+export function SelectChairsCount({
     count,
     setCount,
     active,
-    setActive,
+    setActive
 }: SelectChairsProps) {
     const changeCount = useCallback(
         (diff: number) => {
@@ -25,7 +25,7 @@ function SelectChairsCount({
             }
             const c = Math.min(
                 Math.max(count + diff, ChairConfig.Min),
-                ChairConfig.Max,
+                ChairConfig.Max
             );
             if (c === count) {
                 return;
@@ -38,30 +38,28 @@ function SelectChairsCount({
                 setTimeout(() => setCount(c), 300);
             }
         },
-        [count, active, setActive, setCount],
+        [count, active, setActive, setCount]
     );
 
     return (
         <div className={s.chairCount}>
             <div
                 className={classNames(s.btn, {
-                    [s.active]: count > ChairConfig.Min,
+                    [s.active]: count > ChairConfig.Min
                 })}
                 onClick={() => changeCount(-1)}
             >
-                {'-'}
+                {"-"}
             </div>
             <div className={s.display}>{count}</div>
             <div
                 className={classNames(s.btn, {
-                    [s.active]: count < ChairConfig.Max,
+                    [s.active]: count < ChairConfig.Max
                 })}
                 onClick={() => changeCount(1)}
             >
-                {'+'}
+                {"+"}
             </div>
         </div>
     );
 }
-
-export default SelectChairsCount;

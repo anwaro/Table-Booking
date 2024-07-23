@@ -1,43 +1,11 @@
-import {TableType} from '../constants/Table';
+import { TableType } from "../constants/Table";
 
-import {array} from './array';
-import {tableSize} from './table';
+import { array } from "./array";
+import { tableSize } from "./table";
 
-export const circleTableAngle = (index: number, count: number) =>
-    90 + (360 / count) * index;
+type Size = { width: number; height: number };
 
-export const squareTableAngle = (index: number) => [90, 270, 0, 180][index % 4];
-
-export const rectangleTableAngle = (index: number) => {
-    if (index === 4) {
-        return 90;
-    }
-    if (index === 5) {
-        return 270;
-    }
-    return index % 2 ? 180 : 0;
-};
-
-export const calculateAngle = (
-    index: number,
-    count: number,
-    type: TableType,
-) => {
-    switch (type) {
-        case TableType.Circle:
-            return circleTableAngle(index, count);
-        case TableType.Rectangle:
-            return rectangleTableAngle(index);
-        case TableType.Square:
-        default:
-            return squareTableAngle(index);
-    }
-};
-
-const k = 114;
-
-type Size = {width: number; height: number};
-type DataType = {
+export type DataType = {
     size: Size;
     index: number;
     count: number;
@@ -46,57 +14,128 @@ type DataType = {
     initialY: number;
 };
 
+export const circleTableAngle = (index: number, count: number) => {
+    return (360 / count) * index;
+};
+
+export const squareTableAngle = (index: number, count: number) => {
+    const delta = 360 / count;
+
+    return Math.floor((delta * index) / 90) * 90;
+};
+
+export const rectangleTableAngle = (index: number, count: number) => {
+    if (count > 4 && index === count - 1) {
+        return 270;
+    }
+
+    const rightChairIndex = Math.floor((count - 1) / 2);
+
+    if (count > 5 && index === rightChairIndex) {
+        return 90;
+    }
+
+    if (count < 5) {
+        return index <= (count - 1) / 2 ? 0 : 180;
+    }
+
+    return index <= (count - 2) / 2 ? 0 : 180;
+};
+
+export const calculateAngle = (
+    index: number,
+    count: number,
+    type: TableType
+) => {
+    switch (type) {
+        case TableType.Circle:
+            return circleTableAngle(index, count);
+        case TableType.Rectangle:
+            return rectangleTableAngle(index, count);
+        case TableType.Square:
+        default:
+            return squareTableAngle(index, count);
+    }
+};
+
+const chairSize = 114;
+
 export const circleTableTranslate = ({
-    size: {width},
+    size: { width },
     initial,
     initialY,
-    offsetY,
+    offsetY
 }: DataType) => ({
     y: initial ? initialY : -(width / 2 + offsetY),
-    x: 0,
+    x: 0
 });
 
 export const squareTableTranslate = ({
-    size: {width},
+    size: { width },
     index,
     count,
     initial,
     initialY,
-    offsetY,
+    offsetY
 }: DataType) => {
+    const angle = squareTableAngle(index, count);
+
     const indexes = array(count)
-        .map((_, i) => i)
-        .filter((i) => i % 4 === index % 4);
-    const dx = (width - indexes.length * k) / (indexes.length + 1);
+        .map((_, i) => ({
+            index: i,
+            angle: squareTableAngle(i, count)
+        }))
+        .filter((item) => item.angle === angle);
+
+    const indexInSide = indexes.findIndex((item) => item.index === index) ?? 0;
+
+    const dx = (width - indexes.length * chairSize) / (indexes.length + 1);
+
     return {
         y: initial ? initialY : -(width / 2 + offsetY),
-        x: -(width / 2 + k / 2) + (dx + k) * (indexes.indexOf(index) + 1),
+        x:
+            -width / 2 +
+            chairSize / 2 +
+            dx * (indexInSide + 1) +
+            chairSize * indexInSide
     };
 };
 
 export const rectangleTableTranslate = ({
-    size: {width, height},
+    size: { width, height },
     index,
     count,
     initial,
     initialY,
-    offsetY,
+    offsetY
 }: DataType) => {
-    if (index === 4 || index === 5) {
+    const angle = rectangleTableAngle(index, count);
+
+    if (angle === 90 || angle === 270) {
         return {
             y: initial ? initialY : -(width / 2 + offsetY),
-            x: 0,
+            x: 0
         };
     }
+
     const indexes = array(count)
-        .map((_, i) => i)
-        .filter((i) => ![4, 5].includes(i) && i % 2 === index % 2);
-    const dx = (width - 30 - indexes.length * k) / (indexes.length + 1);
+        .map((_, i) => ({
+            index: i,
+            angle: rectangleTableAngle(i, count)
+        }))
+        .filter((item) => item.angle === angle);
+
+    const indexInSide = indexes.findIndex((item) => item.index === index) ?? 0;
+
+    const dx = (width - indexes.length * chairSize) / (indexes.length + 1);
+
     return {
         y: initial ? initialY : -(height / 2 + offsetY),
         x:
-            -((width - 30) / 2 + k / 2) +
-            (dx + k) * (indexes.indexOf(index) + 1),
+            -width / 2 +
+            chairSize / 2 +
+            dx * (indexInSide + 1) +
+            chairSize * indexInSide
     };
 };
 
@@ -110,7 +149,7 @@ export const calculateTranslate =
             count,
             initial,
             initialY,
-            size,
+            size
         };
         switch (type) {
             case TableType.Circle:

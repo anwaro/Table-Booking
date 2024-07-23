@@ -1,18 +1,18 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 
-import {TableType} from '../../constants/Table';
-import {calculateAngle, calculateTranslate} from '../../helpers/chair';
+import { TableType } from "../../constants/Table";
+import { calculateAngle, calculateTranslate } from "../../helpers/chair";
 
 export function useChairStyle(
     index: number,
     count: number,
     active: boolean,
-    tableType: TableType,
+    tableType: TableType
 ) {
     const trans = calculateTranslate(70, -400);
     const [angle, setAngle] = useState(90 + (360 / count) * index);
     const [translate, setTranslate] = useState(
-        trans(index, count, tableType, true),
+        trans(index, count, tableType, true)
     );
     const [opacity, setOpacity] = useState(0);
 
@@ -41,6 +41,6 @@ export function useChairStyle(
     return {
         opacity,
         transform: `rotate(${angle}deg)`,
-        '--chair-translate': `translate( ${translate.x}px, ${translate.y}px)`,
+        "--chair-translate": `translate( ${translate.x}px, ${translate.y}px)`
     };
 }
