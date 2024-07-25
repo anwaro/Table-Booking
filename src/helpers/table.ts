@@ -20,7 +20,7 @@ export const rectangleTableSize = (count: number) => {
     const size = 400 + Math.floor(Math.max(0, count - 5) / 2) * 140;
     return {
         width: size,
-        height: 230
+        height: Math.min(260, 200 + count * 30)
     };
 };
 

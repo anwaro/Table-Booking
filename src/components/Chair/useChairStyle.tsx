@@ -38,6 +38,7 @@ export function useChairStyle(
             setTranslate(trans(index, count, tableType, true));
         }
     }, [active, index]);
+
     return {
         opacity,
         transform: `rotate(${angle}deg)`,
